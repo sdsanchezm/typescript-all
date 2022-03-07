@@ -311,29 +311,71 @@ console.log('users', users);
 
 #### Methods of Arrays in Typescript 
 
-- some(), Returns true if at least one element in this array satisfies the provided testing function
+- shift(), Removes the first element from an array and returns that element
 - push(), Adds one or more elements to the end of an array and returns the new length of the array
+- pop(), Removes the last element from an array and returns that element
 - splice(), Adds and or removes elements from an array
+- slice(), Extracts a section of an array and returns a new array
+- some(), Returns true if at least one element in this array satisfies the provided testing function
 - filter(), Creates a new array with all of the elements of this array for which the provided filtering function returns true
 - forEach(), Calls a function for each element in the array
 - every(), Returns true if every element in this array satisfies the provided testing function
 - concat(), Returns a new array comprised of this array joined with other array and or value
 - sort(), Sorts the elements of an array
 - lastIndexOf(), Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found
-- pop(), Removes the last element from an array and returns that element
 - indexOf(), Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found
 - reduce(), Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value
-- shift(), Removes the first element from an array and returns that element
 - join(), Joins all elements of an array into a string
 - map(), Creates a new array with the results of calling a provided function on every element in this array
 - reduceRight(), Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a single value
 - toString(), Turns a number into a text
 - reverse(), Reverses the order of the elements of an array -- the first becomes the last, and the last becomes the first
-- slice(), Extracts a section of an array and returns a new array
 
 ### Tuples in Typescript
 - Una tupla en TypeScript es un array de elementos que están tipados. De esta manera cada vez que haya que insertar un elemento se validará que dicho elemento coincida con el tipo de dato establecido en la tupla.
+- Tuples: Allows to write an array with a fixed number of elements
+
+```
+// -- tuples in Typescript
+
+// Tuples: Allows to write an array with a fixed number of elements
+export {}; // this is an export, that allows to use the same name of a variable previously declared
+
+// [1, 'user']
+let user: [number, string]; // 
+user = [1, 'kokoperkle'];
+
+console.log('user : ', user);
+console.log('username : ', user[1]);
+console.log('username.length : ', user[1].length);
+console.log('id : ', user[0]);
+
+// multiple value Tuples
+// id, username, isActive
+let userInfo: [number, string, boolean];
+userInfo = [2, 'merkkilo', true];
+console.log('userInfo : ', userInfo);
+
+// Array of tuples
+let array: [number, string][] = [];
+array.push([1, 'krauskorn']); //0
+array.push([2, 'mershPoulous']); //1
+array.push([3, 'KrausKorg']);   // 2
+console.log('array : ', array);
+
+// array functions
+// Updating tuples: 
+array[2][1] = array[2][1].concat('001');  // how to concat here, because is a string
+console.log('array : ', array);
+```
+
+### Enums in TypeScript
 - 
+
+
+
+
+
 
 
 

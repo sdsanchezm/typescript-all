@@ -149,8 +149,8 @@ let user: object;
 user = {}; // Object
 user = {
     id: 1,
-    username: 'paparazzi',
-    firstname: 'Pablo',
+    username: 'Kling',
+    firstname: 'Rod',
     isPro: true
 };
 console.log('user', user);
@@ -163,8 +163,8 @@ console.log('user', user);
 // ---- Object vs object (class JS vs type TS) 
 const myObj = { // esto es una instancia del objeto object // this is an instance of Object in JS
     id: 1,
-    username: 'paparazzi',
-    firstname: 'Pablo',
+    username: 'Urklu',
+    firstname: 'Marker',
     isPro: true
 };
 const isInstance = myObj instanceof Object; // returns true, meaning, it is an instances of the Object class in JS
@@ -186,7 +186,7 @@ let pictureTitles: Array<string>;
 pictureTitles = ['landscape', 'good grape', 'good fruit'];
 
 // accessing values in arrays
-console.log('main user : ', users[0]); //  users[indice]: luixaviles
+console.log('main user : ', users[0]); //  users[indice]: result
 console.log('job title : ', pictureTitles[0]);
 
 // Properties of arrays
@@ -204,4 +204,77 @@ myArray = [false, 1, '2'];
 // array type any
 let myArray: any[];
 myArray = [{}, true, 'two', 0b11];
+
+// -- tuples in Typescript
+
+// Tuples: Allows to write an array with a fixed number of elements
+export {}; // this is an export, that allows to use the same name of a variable previously declared
+
+// [1, 'user']
+let user: [number, string]; // 
+user = [1, 'kokoperkle'];
+
+console.log('user : ', user);
+console.log('username : ', user[1]);
+console.log('username.length : ', user[1].length);
+console.log('id : ', user[0]);
+
+// multiple value Tuples
+// id, username, isActive
+let userInfo: [number, string, boolean];
+userInfo = [2, 'merkkilo', true];
+console.log('userInfo : ', userInfo);
+
+// Array of tuples
+let array: [number, string][] = [];
+array.push([1, 'krauskorn']); //0
+array.push([2, 'mershPoulous']); //1
+array.push([3, 'KrausKorg']);   // 2
+console.log('array : ', array);
+
+// array functions
+// Updating tuples: 
+array[2][1] = array[2][1].concat('001');  // how to concat here, because is a string
+console.log('array : ', array);
+
+
+// -- Enum in Typescripts 
+// Enum: permiten definir un conjunto de constantes con nombre
+
+// Orientacion para Fotografias
+// const landscape = 0;
+// const portrait = 1;
+// const square = 2;
+// const panorama = 3;
+
+enum PhotoOrientation {
+    Landscape = 0, // podemos darle valor de manera explicita
+    Portrait,   // 1
+    Square,     // 2
+    Panorama    // 3
+}
+
+const landscape: PhotoOrientation = PhotoOrientation.Landscape;
+
+console.log('landscape : ', landscape); // 0
+console.log('Landscape : ', PhotoOrientation[0]); // Landscape
+
+enum PictureOrientation {
+    Landscape = 10, // 10
+    Portrait,   // 11
+    Square,     // 12
+    Panorama    // 13
+}
+console.log('porttrait : ', PictureOrientation.Portrait); // 11
+
+enum Country {
+    Bolivia = 'bol',
+    Colombia = 'col',
+    Mexico = 'mex',
+    EEUU = 'usa',
+    España = 'esp'
+}
+const country: Country = Country.Chupamestepenco;
+console.log('country : ', country); // chu
+
 
