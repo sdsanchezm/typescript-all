@@ -239,9 +239,10 @@ console.log('array : ', array);
 
 
 // -- Enum in Typescripts 
-// Enum: permiten definir un conjunto de constantes con nombre
+// Enum: it allows to define a set of contstants with a name
+// it could be used for, Days of the week, months, countries, colors, 
 
-// Orientacion para Fotografias
+// images orientation: 
 // const landscape = 0;
 // const portrait = 1;
 // const square = 2;
@@ -268,13 +269,80 @@ enum PictureOrientation {
 console.log('porttrait : ', PictureOrientation.Portrait); // 11
 
 enum Country {
+    Chupamestepenco = 'chu',
     Bolivia = 'bol',
     Colombia = 'col',
     Mexico = 'mex',
-    EEUU = 'usa',
-    España = 'esp'
 }
 const country: Country = Country.Chupamestepenco;
 console.log('country : ', country); // chu
+
+
+// -- unions 
+
+10, '10' there are 2 different types of data 
+let idUser: number | string; // this is how we declare variables that can use 2 different types of data, with a pipe
+idUser = 10; // no error
+idUser = '10'; // no error
+
+// find a username using an id
+function getUsernameById(id: number | string) {
+    // business logic, find the user
+    return 'krausvanderbilder';
+}
+
+// uses: 
+getUsernameById(20);
+getUsernameById('20');
+
+// type - alias 
+type IdUser = number | string; // this is like a new type of variable, or alias, the keyword is type
+type Username = string; 
+let idUser: IdUser;
+idUser = 10;
+idUser = '10';
+
+// find a username using an id
+function getUsernameById(id: IdUser): Username {
+    // business logic, find the user
+    return 'krausvanderbilder';
+}
+
+getUsernameById(20);
+getUsernameById('20');
+
+// Literals 
+type SquareSize = '200x200' | '300x300' | '900x900';
+// let smallPicture: SquareSize = '400x400'; // If we try to assign this, it will trigger error, because is not an option
+let smallPicture: SquareSize = '200x200'; // this is ok
+let mediumPicture: SquareSize = '300x300'; // this is ok
+
+
+// -- Type Assertions 
+
+//<type> // Angle Bracket syntax
+let username: any;
+username = 'robergalarga';
+
+// we convert username to string, to get the length of it:
+let message: string =
+  (<string>username).length > 5 ? `hi ${username}` : `username is too short`;
+console.log('Message: ', message);
+
+let usernameWithId: any = 'krauloz 2132';
+
+// How to obtain the username?
+usernameWithId = (<string>usernameWithId).substring(0, 9);
+console.log('username only', usernameWithId);
+
+// Sintaxis 'as' 
+usernameWithId =
+  (username as string).length > 5 ? `hi ${username}` : `username is too short`;
+console.log('username: ', username);
+
+let helloUser: any;
+helloUser = 'hi programmer';
+username = (helloUser as string).substring(6);
+console.log('username', username);
 
 
