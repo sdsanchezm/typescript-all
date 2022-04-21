@@ -1,5 +1,5 @@
-
 console.log("hallo welt");
+
 
 // Number Explicit
 let phone: number;
@@ -693,12 +693,12 @@ enum PhotoOrientation {
 
 class Picture {
 
-  //Propiedades
-  id:number;
-  title:string;
-  orientation:PhotoOrientation;
+  // Properties 
+  id: number;
+  title: string;
+  orientation: PhotoOrientation;
 
-  constructor(id:number,title:string,orientation:PhotoOrientation){
+  constructor(id: number, title: string, orientation: PhotoOrientation){
 
     this.id = id;
     this.title = title;
@@ -706,7 +706,8 @@ class Picture {
 
   }
 
-  //Comportamiento de nuestra clase que estara definido por funciones
+  
+  // The behavoir of the class is defined by this method
 
   toString(){
     return `[id ${this.id},
@@ -718,37 +719,35 @@ class Picture {
 
 class Album{
 
-  id:number;
-  title:string;
+  id: number;
+  title: string;
   pictures: Picture[];
 
-  //Usamos el constructor el cual nos permitira crear objetos de esta clase
-  constructor(id:number, title:string){
+  // Create the constructor: 
+  constructor(id: number, title: string){
 
     this.id = id;
     this.title = title;
     this.pictures = [];
   }
-    addPicture(picture:Picture){
+    addPicture(picture: Picture){
       this.pictures.push(picture);
 
     }
 
   }
 
-  //Creamos un nuevo a partir de la instancia de la clase
+  // Create a new object here
 
 const album: Album = new Album(1, 'Personal Pictures');
-const picture: Picture = new Picture(1, 'Platzi session', PhotoOrientation.Square);
+const picture: Picture = new Picture(1, 'Course session', PhotoOrientation.Square);
 album.addPicture(picture);
 
   console.log(album);
 
 
 // -- Public and Private Classes in TypeScript -----------------------------------------
-
-
-// compilerOptions in tsconfig.json, should be "target": "es6"
+// compiler Options in tsconfig.json, should be "target": "es6"
 
 export {};
 
@@ -762,7 +761,7 @@ enum PhotoOrientation {
 }
 
 class Picture {
-    // Propiedades
+    // Properties
     #id: number;
     #title: string;
     #orientation: PhotoOrientation;
@@ -1141,66 +1140,64 @@ class Album{
   // -- Class Inheritance and static properties - Herencia de clases y propiedades estáticas ---------------------------------------------------------
 
 
-  export {};
+export {};
 
-  enum PhotoOrientation {
-      Landscape,
-      Portrait,
-      Square,
-      Panorama
-  }
-  // SUPERclase
-  abstract class Item {
-      protected readonly _id: number;
-      protected _title: string;
+enum PhotoOrientation {
+    Landscape,
+    Portrait,
+    Square,
+    Panorama
+}
+// SUPERclase
+abstract class Item {
+    protected readonly _id: number;
+    protected _title: string;
+
+    constructor(id: number, title: string) {
+        this._id = id;
+        this._title = title;
+    }
+
+    get id() {
+        return this._id;
+    }
+    // set id(id: number) {
+    //     this._id = id;
+    // }
+    get title() {
+        return this._title;
+    }
+    set title(title: string) {
+        this._title = title;
+    }
+}
   
-      constructor(id: number, title: string) {
-          this._id = id;
-          this._title = title;
-      }
   
-      get id() {
-          return this._id;
-      }
-      // set id(id: number) {
-      //     this._id = id;
-      // }
-      get title() {
-          return this._title;
-      }
-      set title(title: string) {
-          this._title = title;
-      }
-  }
-  
-  
-  // get y set
-  
-  class Picture extends Item{
-      public static photoOrientation = PhotoOrientation;
-      // Propiedades
-      private _orientation: PhotoOrientation;
-  
-      public constructor(id: number, 
-                  title: string, 
-                  orientation: PhotoOrientation) {
-          super(id, title);
-          this.orientation = orientation;
-      }
-      get orientation() {
-          return this._orientation;
-      }
-      set orientation(o: PhotoOrientation) {
-          this._orientation = o;
-      }
-  
-      // Comportamiento
-      public toString() {
-          return `[id: ${this.id}, 
-                   title: ${this.title}, 
-                   orientation: ${this.orientation}]`;
-      }
-  }
+// get y set ------------
+
+class Picture extends Item{
+    public static photoOrientation = PhotoOrientation;
+    // Properties
+    private _orientation: PhotoOrientation;
+
+    public constructor(id: number, title: string, orientation: PhotoOrientation) { 
+        super(id, title);
+        this.orientation = orientation;
+    }
+    get orientation() {
+        return this._orientation;
+    }
+    set orientation(o: PhotoOrientation) {
+        this._orientation = o;
+    }
+
+    // Method
+    public toString() {
+        return `[id: ${this.id}, 
+                title: ${this.title}, 
+                orientation: ${this.orientation}]`;
+    }
+}
   
   class Album extends Item{
       private pictures: Picture[];
@@ -1219,7 +1216,7 @@ class Album{
   album.addPicture(picture);
   console.log('album', album);
   
-  // Accediendo a los miembros publicos
+  // accessing the public members
   console.log('picture.id', picture.id); // get id()
   // picture.id = 100; // private, set id(100);
   picture.title = 'Another title'; // private
@@ -1229,7 +1226,7 @@ class Album{
   // const item = new Item(1, 'Test title');
   // console.log('item', item);
   
-  // Probar el miembro estatico
+  // Probar el miembro estatico 
   console.log('PhotoOrientation', Picture.photoOrientation.Landscape);
 
 

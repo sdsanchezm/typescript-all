@@ -59,7 +59,7 @@ tsc
 
 - the following command, looks for the config file in a specific folder:
 ```
-tsc --project platzi
+tsc --project newproject
 ```
 
 - the following command, omits the config file, and compiles directly:
@@ -68,7 +68,7 @@ tsc file.ts
 ```
 
 ### Establish a dist folder
-- modifying OutDir allows us to establish the output folder
+- Modifying OutDir (within the tsconfig.json) allows us to establish the output folder 
 
 
 ### Variables
@@ -111,6 +111,18 @@ userInfo = `
 
 console.log('user information', userInfo);
 ```
+
+### Data Types: 
+
+- string —For textual data
+- boolean —For true / false values
+- number —For numeric values
+- symbol —A unique value created by calling the Symbol constructor
+- any —For variables that can hold values of various types, which may be unknown when you’re writing the code
+- unknown —A counterpart of any , but no operations are permitted on an unknown without first asserting or narrowing it to a more specific type
+- never —For representing unreachable code (we’ll provide an example shortly)
+- void —An absence of a value
+
 
 ### Variable type any
 - should be used only if is extrictly necessary
