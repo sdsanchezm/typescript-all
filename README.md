@@ -39,14 +39,14 @@ node your_file.js
 ```
 tsc --init
 ```
-- the previous command will automatically create a `tsconfig.json` file 
+- the previous command will automatically create a `tsconfig.json` file
 - it's a object literal that will allow to modify it
 - target, allows to select the ecma script version
 - module, permite configurar el parametro para la generacion de modulos en ts
-- strict, enabled or disable strict verification 
+- strict, enabled or disable strict verification
 - removeComments, eliminates comments in the verification step
 - include and exclude, basically consider or not files at the compilation time
-- extends, allows to inherit config files 
+- extends, allows to inherit config files
 - compileOnSave, compilacion de forma automatica cuando se guarden cambios
 
 
@@ -68,12 +68,12 @@ tsc file.ts
 ```
 
 ### Establish a dist folder
-- Modifying OutDir (within the tsconfig.json) allows us to establish the output folder 
+- Modifying OutDir (within the tsconfig.json) allows us to establish the output folder
 
 
 ### Variables
 
-- El tipo any deberia dejarse como ultimo recurso 
+- El tipo any deberia dejarse como ultimo recurso
 
 ```
 // Number Explicit
@@ -102,7 +102,7 @@ username = 'anotherusername';
 // Template String with use of back-tick ``
 let userInfo: string;
 userInfo = `
-    = User information: 
+    = User information:
     username: ${username}
     firtsname: ${username + ' anbreaker'}
     phone: ${phone}
@@ -112,7 +112,7 @@ userInfo = `
 console.log('user information', userInfo);
 ```
 
-### Data Types: 
+### Data Types:
 
 - string —For textual data
 - boolean —For true / false values
@@ -130,7 +130,7 @@ console.log('user information', userInfo);
 
 ```
 // type Any  For dynamic variables, it should be used a an ultimate resource (in case no more option)
-// Explicit type: 
+// Explicit type:
 let idUser: any;
 idUser = 1; // this is Number
 idUser = '1'; // this is String
@@ -138,7 +138,7 @@ console.log('iduser ', idUser);
 console.log(typeof idUser);
 
 // Inferred type
-let otherId; // here ts will assume any 
+let otherId; // here ts will assume any
 otherId = '1';
 otherId = 1;
 // otherId = true;
@@ -150,12 +150,12 @@ let kk1: any = 'Hello typescript';
 const response = kk1.substring(11);
 console.log(`response ${response}`);
 ```
-- by the other hand `void` is the absence of type 
+- by the other hand `void` is the absence of type
 - commonly used in functions that are returning value
 - Not used in variable declaration
 - Tipo `Void`: Son funciones que no necesitan de un retorno, por lo que al asignar el tipo void se sobre entiende que estas funciones retornan un undefind o un valor no definido, mas si permiten el uso de este return con este valor, que en el futuro puede ser usado para la terminacion de una funcion de este tipo.
 - Tipo `Never`: Son funciones que nunca retornaran un valor, dentro de TS si intentas retornar un valor en una funcion `Never` te marcara `error`
-- Normally `never` are used to ensure a function does not return a value, if a value is returned, then TS will trigger an error 
+- Normally `never` are used to ensure a function does not return a value, if a value is returned, then TS will trigger an error
 - Variables type `never` do not allow value assignation; (the opposite to `void` that allows the `undefind` and `null` type being assigned)
 
 ```
@@ -165,9 +165,9 @@ function showInfo(user: any): any {
     console.log(`User Info ${user.id} ${user.username} ${user.firstname}`);
     //   return 'something';
   }
-  
+
 showInfo({id: 1, username: 'birk urpe', firstname: 'Klaaine Kirke'});
-  
+
 // Inferred type
 function showFormattedInfo(user: any) {
     console.log(`User Info,
@@ -178,7 +178,7 @@ function showFormattedInfo(user: any) {
 
 showFormattedInfo({id: 1, username: 'Muck Kraus', firstname: 'Belck merk'});
 
-// Type void as variable 
+// Type void as variable
 let unusable: void;
 // unusable = null; // change "strict": false in tsconfig.json in order to use this mode
 unusable = undefined;
@@ -221,18 +221,18 @@ tsc --strictNullChecks
 // Explicit
 let nullVariable: null;
 nullVariable = null;
-// nullVariable = 1; // this is an eror because we are assigned something different that null 
+// nullVariable = 1; // this is an eror because we are assigned something different that null
 
 // Inferred
-let otherVariable = null;   //  This is inferred as type any 
+let otherVariable = null;   //  This is inferred as type any
 otherVariable = 'test';
 
 console.log('nullVariable : ', nullVariable);
 console.log('otherVariable : ', otherVariable);
 
-//  Undefined variable type 
+//  Undefined variable type
 let undefinedVariable: undefined = undefined; // this is fine, the value undefined is being assigned to a variable type undefined
-// undefinedVariable = 'test'; // This triggers Error 
+// undefinedVariable = 'test'; // This triggers Error
 
 let otherUndefined = undefined;     //  any
 otherUndefined = 1;
@@ -240,7 +240,7 @@ otherUndefined = 1;
 console.log('undefinedVariable : ', undefinedVariable);
 console.log('otherUndefined : ', otherUndefined);
 
-// subtypes null and undefined 
+// subtypes null and undefined
 
 /*
  * tsc --watch src/type-null-undefined.ts --strictNullChecks
@@ -252,12 +252,12 @@ let albumName: string;
 // albumName = undefined;
 ```
 
-### Type Object 
+### Type Object
 - Everything that is not number, string, boolean, null, undefined etc, is considered object
-- 
+-
 ```
-// Type Object and object in Typescript 
-// explicit 
+// Type Object and object in Typescript
+// explicit
 let user: object;
 user = {}; // Object
 user = {
@@ -267,14 +267,14 @@ user = {
     isPro: true
 };
 console.log('user', user);
-// console.log('user.username', user.username); // cant access user.username 
+// console.log('user.username', user.username); // cant access user.username
 
 
 // Object: instanciate a class Object of JavaScript
 // object: non primitive type
 ```
 
-- Object vs object (class JS vs type TS) 
+- Object vs object (class JS vs type TS)
 ```
 const myObj = { // esto es una instancia del objeto object // this is an instance of Object in JS
     id: 1,
@@ -314,14 +314,14 @@ console.log('job title : ', pictureTitles[0]);
 // Properties of arrays
 console.log('users.length : ', users.length); // Size of the array
 
-// fucntions and methods in arrays 
+// fucntions and methods in arrays
 users.push('newData1');  // add a new value at the end of the array
 users.sort();   //  alphabetically sort the array
 console.log('users', users);
 ```
 
 
-#### Methods of Arrays in Typescript 
+#### Methods of Arrays in Typescript
 
 - shift(), Removes the first element from an array and returns that element
 - push(), Adds one or more elements to the end of an array and returns the new length of the array
@@ -354,7 +354,7 @@ console.log('users', users);
 export {}; // this is an export, that allows to use the same name of a variable previously declared
 
 // [1, 'user']
-let user: [number, string]; // 
+let user: [number, string]; //
 user = [1, 'kokoperkle'];
 
 console.log('user : ', user);
@@ -376,13 +376,13 @@ array.push([3, 'KrausKorg']);   // 2
 console.log('array : ', array);
 
 // array functions
-// Updating tuples: 
+// Updating tuples:
 array[2][1] = array[2][1].concat('001');  // how to concat here, because is a string
 console.log('array : ', array);
 ```
 
 ### Enums in TypeScript
-- Allows to define a set of contstants with a name 
+- Allows to define a set of contstants with a name
 
 ```
 enum PictureOrientation {
@@ -404,17 +404,17 @@ console.log('country : ', country); // chu
 ```
 
 
-### Unions of Types, Alias, Types in TypeScript 
+### Unions of Types, Alias, Types in TypeScript
 - Una función en Typescript puede recibir como parámetro diferentes tipos predefinidos usando Union Types
 - Usando Alias podemos reducir la cantidad de código en los tipos predefinidos
 - En ese caso en vez de definir dos tipos con la misma condición, sería interesante englobarlas en una sola
 - En TypeScript se puede definir una variable con multiple tipos de datos: Union Type
-- Se usa el simbolo de pipe ('|') entre los tipos 
+- Se usa el simbolo de pipe ('|') entre los tipos
 
 ```
-// -- unions 
+// -- unions
 
-10, '10' there are 2 different types of data 
+10, '10' there are 2 different types of data
 let idUser: number | string; // this is how we declare variables that can use 2 different types of data, with a pipe
 idUser = 10; // no error
 idUser = '10'; // no error
@@ -425,13 +425,13 @@ function getUsernameById(id: number | string) {
     return 'krausvanderbilder';
 }
 
-// uses: 
+// uses:
 getUsernameById(20);
 getUsernameById('20');
 
-// type - alias 
+// type - alias
 type IdUser = number | string; // this is like a new type of variable, or alias, the keyword is type
-type Username = string; 
+type Username = string;
 let idUser: IdUser;
 idUser = 10;
 idUser = '10';
@@ -445,7 +445,7 @@ function getUsernameById(id: IdUser): Username {
 getUsernameById(20);
 getUsernameById('20');
 
-// Literals 
+// Literals
 type SquareSize = '200x200' | '300x300' | '900x900';
 // let smallPicture: SquareSize = '400x400'; // If we try to assign this, it will trigger error, because is not an option
 let smallPicture: SquareSize = '200x200'; // this is ok
@@ -455,7 +455,7 @@ let mediumPicture: SquareSize = '300x300'; // this is ok
 ### Type Assertions in Typescript
 
 - Documentation at (https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-6.html#new-tsx-file-extension-and-as-operator)[https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-6.html#new-tsx-file-extension-and-as-operator]
-- TS do not make any type of verification 
+- TS do not make any type of verification
 - If we declare a variable type any, and then assign data type string, then we do not have a way to find for example the length, so we have to convert the type, like this:
 ```
 //<type> // Angle Bracket syntax
@@ -473,7 +473,7 @@ let usernameWithId: any = 'krauloz 2132';
 usernameWithId = (<string>usernameWithId).substring(0, 9);
 console.log('username only', usernameWithId);
 
-// Sintaxis 'as' 
+// Sintaxis 'as'
 usernameWithId =
   (username as string).length > 5 ? `hi ${username}` : `username is too short`;
 console.log('username: ', username);
@@ -485,11 +485,48 @@ console.log('username', username);
 ```
 
 
+### tsconfig file changes:  "outFile": "./main.js"
+
+* Generar solamente un solo archivo:
+* outFile": "./main.js" va a generar todo el resultado en un solo archivo js
+* la parte de `"module": "commonjs"` tambien puede ser `"module": "amd"` // estos son los manejadores de js
+* los js deben ser generados en folders especificaas, igual que los .map
+* leer un `main.js` es mucho mas rapido que leer muchas carpetas (el servidor va a tener que ser consultado en muchos directorios).
+* el `main.ts` se puede almacenar en cache y es mucho mas rapido
+
+#### Objetivo:
+* El objetivo es tener solamente arvhivos `.ts`
 
 
+#### sourceMap": true
+* uncomment `// "sourceMap": true, /* Generates corresponding '.map' file. */` if you want the .map files created.
+* It is useful to debug, and refer to the .ts file instead of the .js file created (eg: error in line 35, .js or .ts? now dev Tools will be specific)
+* Chrome Dev tools also allows to include a break point. (thanks to the .map file created)
+
+#### removeComments: true
+* the Fernando HErrera Class is `¿Es posible la depuración del código de TypeScript?`
+* uncomment `removeComments: true` para obtener el .js sin comentarios, son bytes que se van a enviar a produccion si se dejan ahi
+
+#### Prevent TS to enter a folder to compile
+ * enter the exclude or include directive to exclude or include the compilation within a specific directory
+
+ ```
+,
+"exclude": [
+  "node_modules2"
+],
+"include": [
+  "node_modules"
+]
+}
+ ```
+ * el exclude: es lo unico que va a excluior
+ * el include, es lo unico que va a incluir
 
 
+#### Do not use var
 
-
-
-
+* el uso de var deberia evitarse
+* si const define un objeto, las propiedades de ese objeto pueden cambiar (incluso si son const)
+* usualmente, el objetivo es ES6 (el Es5 se usa para compatibilidad)
+*   
