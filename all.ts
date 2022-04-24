@@ -419,8 +419,10 @@ function apply(items: number[], fn:(item: number) => number): number{
 // -- Interfaces ------------------------------------------------------------------------------------
 
 
-// Hasta donde tenia entendido en POO, una interfaz definia unicamente los METODOS de un objeto y no las propiedades como lo muestra el ejemplo que nos da el profesor. Tanto de las propiedades como los metodos se encargan las clases. Aqui es donde entra Typescript, en TS podemos tambien definir propiedades, no unicamente metodos.
-// Y si es util, creo que esta definicion de interfaz es un poco mas clara: Una interfaz (En TypeScript) es un tipo (como string, boolean, number, etc) mas “complejo”, en el cual defines (como enun contrato) las propiedades y metodos que se deben cumplir de cualquier objeto que lo instancie.
+// una interfaz definia unicamente los METODOS de un objeto y no las propiedades. 
+// Tanto de las propiedades como los metodos se encargan las clases.
+// Aqui es donde entra Typescript, en TS podemos tambien definir propiedades, no unicamente metodos.
+// Y si es util, creo que esta definicion de interfaz es un poco mas clara: Una interfaz (En TypeScript) es un tipo (string, boolean, number, etc) mas “complejo”, en el cual defines (como en un contrato) las propiedades y metodos que se deben cumplir de cualquier objeto que lo instancie.
 // La diferencia entre una interfaz y una clase es que en la interfaz solo hacemos mencion de que esperamos de un objeto, en una clase mencionamos las propiedades (igual que una interfaz) pero definimos los metodos (osea, especificamos que hara ese metodo, en la interfaz solo mencionamos el nombre de la funcion)
 
 // Funcion para mostrar una Fotografia
@@ -595,7 +597,6 @@ console.log('user : ', user);
 
 
 // -- Inheritance - Extensión de interfaces -------------------------------------------------------------------
-
 
 export {};
 

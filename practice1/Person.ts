@@ -1,7 +1,7 @@
 export class Person{
-    private id: number;
-    private firstname: string;
-    private lastname: string;
+    public id: number;
+    public firstname: string;
+    public lastname: string;
 
     constructor(id: number, firstname: string, lastname: string){
         this.id = id;
