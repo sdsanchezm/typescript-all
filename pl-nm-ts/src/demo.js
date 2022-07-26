@@ -1,3 +1,5 @@
+//@ts-check
+
 (()=> {
   const myCart = [];
   const products = [];
@@ -5,14 +7,14 @@
 
   async function getProducts() {
     const rta = await fetch('http://api.escuelajs.co/api/v1/products', {
-      mehtod: 'GET'
+      method: 'GET'
     });
     const data = await rta.parseJson();
     products.concat(data);
   }
   function getTotal() {
     const total = 0;
-    for (const i = 0; i < products.length(); i++) {
+    for (let i = 0; i < products.length; i++) {
       total += products[i].prize;
     }
     return total;
@@ -24,14 +26,14 @@
   }
 
   await getProducts();
-  addProducto(1);
-  addProducto(2);
+  addProduct(1);
+  addProduct(2);
   const total = getTotal();
   console.log(total);
   const person = {
-    name: 'Nicolas',
-    lastName: 'Molina'
+    name: 'Kraus',
+    lastName: 'VanDerDild'
   }
-  const rta = person +  limit;
+  // const rta = person +  limit;
   console.log(rta);
 });
