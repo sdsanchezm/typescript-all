@@ -82,7 +82,7 @@ let phone: number;
 phone = 924234669;
 
 // Number inferred
-let phoneMovil = 637128815;
+let phoneMovil = 99 999 999;
 // let phoneMovil = true;  Error is defined before
 
 let hex: number = 0x21ac;
@@ -530,3 +530,20 @@ console.log('username', username);
 * si const define un objeto, las propiedades de ese objeto pueden cambiar (incluso si son const)
 * usualmente, el objetivo es ES6 (el Es5 se usa para compatibilidad)
 *   
+
+
+#### uto executed anonymous function
+
+```
+(() => {})();
+```
+
+- or
+
+```
+(() => {
+
+  // code here
+
+})();
+```
