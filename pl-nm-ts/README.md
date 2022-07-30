@@ -4,7 +4,7 @@
 
 
 
-## Install
+## Start with tsc
 
 - Install only for the actual project
 ```
@@ -34,6 +34,7 @@ quote_type = single
 max_line_length = off
 trim_trailing_whitespace = false
 ```
+
 - In order to obtain the resulted js file in a spefici folder using es6:
 - can also be specified in tsconfig.json
 ```
@@ -59,12 +60,36 @@ npx tsc --watch
 ```
 
 
+## Start with ts-node
+- `tsc` transpile all the file according to your tsconfig. (mainly used in prod)
+- `ts-node` will start from the entry file and transpile the file step by step through the tree based on the import/export. (mainly used in dev)
+- `ts-node` allows to execute typescript directly without transpilation 
 
-### Lessons:
+- Script suggested:
+```
+"dev": "nodemon -w *.ts -e ts -x ts-node --files -H -T ./src/index.ts"
+```
+
+- init node:
+	- `npm init -y`
+- install tsc locally
+	- `npm i typescript --save-dev`
+- init tsconfig.json
+	- `tsc --init`
+- Set the output dir
+	- `outDir: "./dist"`
+- To transpile:
+	- `npx tsc`
+- To install:
+	- `npm install -D ts-node` (-D is the same as --save-dev)
+- `ts-node` allow us to execute `ts` from the `ts` file. 
+- By using `ts-node` it does not generate the `.js` under ./dist. What is in `./dist` is for production. 
+- to use ts-node:
+	- `npx ts-node src/index.ts`
+- It shows the console.log without having to generate the .js
 
 
-
-#### From Google Code Review
+#### From Google Code book
 
 1. Layer 1: Static Code Analysis
 2. Layer 2: Unit Tests
