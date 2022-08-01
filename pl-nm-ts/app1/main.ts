@@ -3,11 +3,14 @@ import { addProduct } from './products/product.service';
 
 addProduct({
 	id: 1,
-	title: 'producto1',
 	createdAt: new Date(),
+	updatedAt: new Date(),
+	title: 'producto1',
 	stock: 2,
 	category: {
 		id: '32',
+		createdAt: new Date(),
+		updatedAt: new Date(),
 		name: 'cat4'
 	}
 });
