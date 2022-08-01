@@ -6,13 +6,19 @@ addProduct({
 	createdAt: new Date(),
 	updatedAt: new Date(),
 	title: 'producto1',
+	image: '/images/product1',
+	description: "this is nice and wonderful product",
+	color: "blue",
+	price: 300,
 	stock: 2,
 	category: {
 		id: '32',
 		createdAt: new Date(),
 		updatedAt: new Date(),
 		name: 'cat4'
-	}
+	},
+	isNew: false,
+	tags: ['home', 'tech']
 });
 
 
