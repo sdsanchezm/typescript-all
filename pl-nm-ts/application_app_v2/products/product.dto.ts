@@ -18,3 +18,12 @@ export interface UpdateProductDto extends Partial<CreateProductDto> {}
 // Required makes all properties mandatory
 type example2 = Required<Product>;
 
+// this is a fusion, they should be partial, but Readonly as well, this is the way
+// export interface FindProductDto extends Readonly<Partial<Product>> {} // this was before ReadonlyArray
+
+// This is including the ReadonlyArray
+export interface FindProductDto extends Readonly<Partial<Omit<Product, 'tags'>>> {
+	readonly tags: ReadonlyArray<string>;
+}
+
+type example3 = Readonly<Product>;

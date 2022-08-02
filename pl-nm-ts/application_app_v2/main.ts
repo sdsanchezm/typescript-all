@@ -1,7 +1,8 @@
 
 import { faker } from '@faker-js/faker'; // npm install @faker-js/faker --save-dev
 import { update } from 'lodash';
-import { addProduct, products, updateProduct } from './products/product.service';
+import { Product } from './products/product.model';
+import { addProduct, products, updateProduct, findProducts } from './products/product.service';
 
 for (let index = 0; index < 50; index++){
 	addProduct({
@@ -19,7 +20,7 @@ for (let index = 0; index < 50; index++){
 	});
 }
 
-console.log(products);
+// console.log(products);
 
 const product = products[0];
 updateProduct(product.id, {
@@ -28,8 +29,13 @@ updateProduct(product.id, {
 	// id: '123' // this field is not editable, based on the dto (productDto in this case)
 });
 
+const k1 = findProducts({
+	stock: 10,
+	color: 'red',
+	tags: ['as', 'as']
+});
 
-
+console.log(k1);
 
 
 
