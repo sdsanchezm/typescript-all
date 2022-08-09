@@ -1,4 +1,6 @@
 
+// Lecture 9 and 10 ================================================
+
 // crating the Animal class 
 export class Animal {
     // constructor(public name: string) {} // it can be public
@@ -61,6 +63,8 @@ perruncho.barking(3);
 perruncho.move();
 
 
+
+// lecture 11 ================================================
 console.log(Math.PI);
 console.log(Math.max(3,4,8,12,44));
 
@@ -107,7 +111,9 @@ console.log(myMath4.max(3,5,11,23)); // 23
 console.log(myMath4.max(-3,-5,-11,-23)); // -3
 
 
+// ACCESS =======================================
 
+// The acces modifiers are only part of the classes, not interfaces
 
 // public:
 // everyone can modify and access using public
@@ -116,11 +122,95 @@ console.log(myMath4.max(-3,-5,-11,-23)); // -3
 // is private but with inheritance (can be used only internally, but can be inherited)
 
 // Abstract: 
-
+// Is a way to restrict from create instances from a parent class
 
 // static: 
 // the property or method, is available outside of the class, without creating an instance
 // only calling the class
+
+
+
+// Lecture 12 ================================================
+export interface Driver {
+    database: string;
+    password: string;
+    port: number;
+
+    connect(): void;
+    disconnect(): void;
+    isConnected(name: string): boolean;
+}
+
+
+// this class defines how we do connect to the database
+// it should implement all attributes from an interface (is not inheritance)
+// It is like a standard/contract that everyone should follow
+class PostgresdatabaseDriver implements Driver {
+
+    constructor(
+        public database: string,
+        public password: string,
+        public port: number
+    ){}
+
+    disconnect(): void {
+        // throw new Error("Method not implemented.");
+        // yeah
+    }
+
+    isConnected(name: string): boolean {
+        // throw new Error("Method not implemented.");
+        return true;
+    }
+
+    connect(): void { // this should be void because the Driver interface was defined like that
+        // yeah
+    }
+    
+}
+
+// here the word 'implements' is used
+class OracleDatabaseDriver implements Driver {
+    
+    constructor(
+        public database: string,
+        public password: string,
+        public port: number
+    ){}
+    connect(): void {
+        // throw new Error("Method not implemented.");
+    }
+    disconnect(): void {
+        // throw new Error("Method not implemented.");
+    }
+    isConnected(name: string): boolean {
+        // throw new Error("Method not implemented.");
+        return true;
+    }
+}
+
+
+// The interface ensures that a type is created, how to receive parameters and how to return them
+// Everyone whoi implemets interfaces, should use interfaces in that specific way
+// normally an interface implements something that is going to be public, not private, if something private is required
+// then specify in the class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
