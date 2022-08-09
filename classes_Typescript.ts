@@ -133,7 +133,7 @@ interface Dimension {
 // }
 
 abstract class Shape {
-		public name: string;
+		public name: string = '';
 		abstract dimensions(): Dimension;
 }
 
@@ -155,7 +155,10 @@ class Square extends Shape{
 
 }
 
-class Hexagon extends Shape{ // when this class is created, TS requires that the dimensions method is implemented (it somes from Shape)
+// when this class is created, TS requires that the dimensions method is implemented (it somes from Shape)
+class Hexagon extends Shape{
+	
+	name: 'hexa';
 
 	sayHi(){
 		console.log('this is a good hexagon');
