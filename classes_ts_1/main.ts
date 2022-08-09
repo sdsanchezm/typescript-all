@@ -122,12 +122,20 @@ console.log(myMath4.max(-3,-5,-11,-23)); // -3
 // is private but with inheritance (can be used only internally, but can be inherited)
 
 // Abstract: 
-// Is a way to restrict from create instances from a parent class
+// Is a way to restrict from create instances from a parent class 
 
 // static: 
 // the property or method, is available outside of the class, without creating an instance
 // only calling the class
 
+// extends:
+// is for extending a class.
+
+// implements:
+// is for implementing an interface
+
+// constructor:
+// the constructor can also be private 
 
 
 // Lecture 12 ================================================
@@ -197,12 +205,72 @@ class OracleDatabaseDriver implements Driver {
 
 
 
+// Lecture 13 =================================================
+
+abstract class Shape {
+
+    constructor (
+        public name: string
+    ){}
+}
+
+class Triangle extends Shape {
+    
+    constructor (
+        public side1: number,
+        public side2: number,
+        public side3: number,
+        name: string
+    ){
+        super(name);
+    }
+}
+
+// instance of shape can be created if class Shape is public
+// const shape1 = new Shape('superShapeTriangle');
+
+// instance of shape CANNOT be created if class Shape is abstract
+// const shape1 = new Shape('superShapeTriangle');
+
+// instance of Triangle:
+const triangle1 = new Triangle(2,4,5,'superTriangleHere');
 
 
+// Lecture 14 =====================================================
+// Singleton Pattern
+
+export class SuperService {    
+
+    static uniqueInstance: SuperService | null = null;
+
+    private constructor(private name: string){}
+
+    getName(){
+        return this.name;
+    }
+
+    static create(name: string) {
+        if(SuperService.uniqueInstance === null){
+            SuperService.uniqueInstance = new SuperService(name);
+        }
+        return SuperService.uniqueInstance;
+    }
+}
 
 
+// const s1 = new SuperService('service 1');
+// console.log(s1.getName());
+// const s2 = new SuperService('service 2');
+// console.log(s2.getName());
 
+const s1 = SuperService.create('service1');
+console.log(s1.getName());
+const s2 = SuperService.create('service2');
+console.log(s2.getName())
+const s3 = SuperService.create('service3');
+console.log(s3.getName())
 
+console.log(s1 === s2);
 
 
 
