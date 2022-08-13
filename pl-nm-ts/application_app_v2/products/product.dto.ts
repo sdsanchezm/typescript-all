@@ -5,7 +5,7 @@ import { Product } from './../products/product.model';
 
 // DTO Creation, to use use, import the interface from the Product Service
 export interface CreateProductDto extends Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'category'> {
-	categoryId: string; // I am creating this id here (is nopt in the model)
+	categoryId: string; // I am creating this id here (is not in the model)
 }
 
 
