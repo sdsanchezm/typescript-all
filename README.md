@@ -127,6 +127,19 @@ tsc file.ts
   
 ```
 
+### Notes: 
+- Most common practice:
+  - tsc is used for production build
+  - ts-node for development purposes running in --watch mode along with nodemon. 
+  - Command often used for development mode for a node/typescript projects:
+  ```
+    "dev": "nodemon -w *.ts -e ts -x ts-node --files -H -T ./src/index.ts"
+  ```
+
+
+
+# Typescript, the language
+
 ### Variables
 
 - El tipo any deberia dejarse como ultimo recurso
