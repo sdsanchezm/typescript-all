@@ -2,26 +2,26 @@
 
 ## install Typescript compiler
 
-- Esto lo instala de forma global
+- This is a global install: 
 ```
 npm install -g typescript
 ```
 
-- Verificar:
+- Verify:
 ```
 tsc -v
 ```
 
-### Compilar:
+### to compile/transpile:
 ```
 tsc your_file.ts
 ```
 
-### Compile automatically
-```
-tsc --watch your_file.ts
-
-```
+### Compile using watch:
+  
+  ```
+  tsc --watch your_file.ts
+  ```
 
 ### Result of compilation:
 
@@ -36,9 +36,9 @@ node your_file.js
 - allows to specify the root of the project
 - allows to configure optios of the compiler
 - To create it:
-```
-tsc --init
-```
+  ```
+  tsc --init
+  ```
 - the previous command will automatically create a `tsconfig.json` file
 - it's a object literal that will allow to modify it
 - target, allows to select the ecma script version
@@ -52,17 +52,17 @@ tsc --init
 
 ### modes of compilation:
 
-- the following command, looks for the config file:
+- To look for the config file:
 ```
 tsc
 ```
 
-- the following command, looks for the config file in a specific folder:
+- The following command, looks for the config file in a specific folder:
 ```
 tsc --project newproject
 ```
 
-- the following command, omits the config file, and compiles directly:
+- The following command, omits the config file, and compile/transpile directly:
 ```
 tsc file.ts
 ```
@@ -70,6 +70,62 @@ tsc file.ts
 ### Establish a dist folder
 - Modifying OutDir (within the tsconfig.json) allows us to establish the output folder
 
+
+### Basics of `tsconfig.json` (some examples):
+
+- Example 1
+  ```
+  {
+      "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES2020",
+        "sourceMap": true,
+        "outDir": "dist",
+      },
+      "include": ["src/**/*"],
+    }
+  ```
+
+- Example 2:
+
+```
+{
+    "compilerOptions": {
+      /* Visit https://aka.ms/tsconfig.json to read more about this file */
+  
+      /* Language and Environment */
+      "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+      // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
+      // "jsx": "preserve",                                /* Specify what JSX code is generated. */
+  
+      /* Modules */
+      "module": "commonjs",                                /* Specify what module code is generated. */
+      // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+      // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
+      // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+      // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
+      // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
+  
+      /* JavaScript Support */
+      // "allowJs": true,                                  /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */
+      // "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
+      // "maxNodeModuleJsDepth": 1,                        /* Specify the maximum folder depth used for checking JavaScript files from `node_modules`. Only applicable with `allowJs`. */
+      // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+      // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
+      "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+      // "allowSyntheticDefaultImports": true,             /* Allow 'import x from y' when a module doesn't have a default export. */
+      "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+      "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+  
+      /* Type Checking */
+      "strict": true,                                      /* Enable all strict type-checking options. */
+      // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+      "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    }
+  }
+  
+```
 
 ### Variables
 
