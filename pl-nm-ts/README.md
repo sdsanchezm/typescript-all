@@ -3,7 +3,6 @@
 ## Workspace Setup
 
 
-
 ## Start with tsc
 
 - Install only for the actual project
@@ -92,7 +91,7 @@ npx tsc --watch
 - `ts-node` will start from the entry file and transpile the file step by step through the tree based on the import/export. (mainly used in dev)
 - `ts-node` allows to execute typescript directly without transpilation 
 
-- Script suggested:
+- Command suggested:
 ```
 "dev": "nodemon -w *.ts -e ts -x ts-node --files -H -T ./src/index.ts"
 ```
