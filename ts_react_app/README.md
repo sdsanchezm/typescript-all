@@ -7,9 +7,13 @@
 ## To add ts to a new project
 
 - `yarn add typescript @types/node @types/react @types/react-dom @types/jest`
-- `npx tsc --init`
 
-## Install typescript:
+## To start the project
+
+- Check the package.json (inside of src) for commands, it is `npm start`
+
+
+## Install typescript without CRA in a project
 
 - `npm install typescript --save-dev`
 - `@types/node`
