@@ -1,4 +1,4 @@
-# TypeScript Learning process personal documentation
+# TypeScript Learning documentation
 
 ## install Typescript compiler
 
