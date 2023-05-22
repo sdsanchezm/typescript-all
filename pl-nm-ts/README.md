@@ -39,6 +39,7 @@ trim_trailing_whitespace = false
 ```
 npm tsc src/index.ts --outDir dist --target es6
 ```
+
 - `deno` is a technology that is growing!
 - Innitiate the `tsconfig.json` file:
 ```

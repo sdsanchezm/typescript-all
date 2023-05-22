@@ -6,10 +6,18 @@
 ```
 npm install -g typescript
 ```
+or
+```
+npm install typescript --save-dev 
+```
 
 - Verify:
 ```
 tsc -v
+```
+or
+```
+npx tsc --version
 ```
 
 ### to compile/transpile:
@@ -35,6 +43,7 @@ node your_file.js
 ### archivo tsconfig.json
 - allows to specify the root of the project
 - allows to configure optios of the compiler
+
 - To create it:
   ```
   tsc --init
@@ -49,6 +58,17 @@ node your_file.js
 - extends, allows to inherit config files
 - compileOnSave, compilacion de forma automatica cuando se guarden cambios
 
+- In order to obtain the resulted js file in a specific folder using ES6:
+- can also be specified in tsconfig.json
+```
+npm tsc src/index.ts --outDir dist --target es6
+```
+
+- Important lines:
+```
+"rootDir": "./src",
+"outDir": "./dist",
+```
 
 ### modes of compilation:
 
@@ -67,8 +87,13 @@ tsc --project newproject
 tsc file.ts
 ```
 
+- Execute watch:
+```
+npx tsc --watch
+```
+
 ### Establish a dist folder
-- Modifying OutDir (within the tsconfig.json) allows us to establish the output folder
+- Modifying `OutDir` property (within the `tsconfig.json`) allows us to establish the output folder
 
 
 ### Basics of `tsconfig.json` (some examples):
@@ -125,6 +150,33 @@ tsc file.ts
     }
   }
   
+```
+
+  - Example 3:
+```
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Language and Environment */
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+
+    /* Modules */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    // "rootDir": "./src",                                  /* Specify the root folder within your source files. */
+    // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+    // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
+    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+
+    /* Type Checking */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  }
+}
+
 ```
 
 ### Notes: 
