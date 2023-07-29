@@ -1,24 +1,37 @@
 # TypeScript Learning documentation
 
-## install Typescript compiler
+## install Typescript compiler (tsc or npx tsc)
 
 - This is a global install: 
-```
-npm install -g typescript
-```
-or
-```
-npm install typescript --save-dev 
-```
+  ```
+  npm install -g typescript
+  ```
+  or
+  ```
+  npm install typescript --save-dev 
+  ```
 
-- Verify:
-```
-tsc -v
-```
-or
-```
-npx tsc --version
-```
+- Verify (global install):
+  ```
+  tsc -v
+  ```
+  or (dev dependencies version)
+  ```
+  npx tsc --version
+  ```
+
+## Differences prod and dev environments
+
+- tsc is the official TypeScript compiler. It is a command-line tool that takes TypeScript files (.ts) and compiles them into JavaScript files (.js). The compiled JavaScript code can then be executed by Node.js or used in a web browser. tsc is primarily used in a build process or development workflow where TypeScript code is transpiled to JavaScript before deployment or execution. The compiled JavaScript files are typically separate from the original TypeScript source code.
+
+- ts-node is a tool that allows you to run TypeScript code directly without the need for a separate build step. It acts as a runtime execution environment for TypeScript. When you run a TypeScript file using ts-node, it will compile the TypeScript code on-the-fly and execute it directly in the Node.js environment without generating intermediate JavaScript files.
+
+- In summary, tsc is typically used in a build pipeline for production deployments, while ts-node is used during development to streamline the testing and debugging process. 
+
+
+### Alternative
+
+- 
 
 ### to compile/transpile:
 ```
@@ -183,10 +196,12 @@ npx tsc --watch
 - Most common practice:
   - tsc is used for production build
   - ts-node for development purposes running in --watch mode along with nodemon. 
-  - Command often used for development mode for a node/typescript projects:
-  ```
-    "dev": "nodemon -w *.ts -e ts -x ts-node --files -H -T ./src/index.ts"
-  ```
+
+  #### Script
+  - should e in package.json
+    ```
+      "dev": "nodemon -w *.ts -e ts -x ts-node --files -H -T ./src/index.ts"
+    ```
 
 
 
@@ -668,3 +683,39 @@ console.log('username', username);
 
 })();
 ```
+
+#### Notes 
+
+- tsconfig file
+  - 
+  ```
+  {
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es2017"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+  ```
+  
+- Explanation of some key options:
+
+  - "target": "es2017": This option specifies the ECMAScript version to which the TypeScript code will be transpiled. In this case, it's set to ES2017.
+
+  - "module": "commonjs": This option specifies the module system used in the generated JavaScript code. Here, we are using CommonJS modules, which are suitable for Node.js environments.
+
+  - "lib": ["es2017"]: This option specifies the library files to include. We include the "es2017" library to get access to the ES2017 features.
+
+  - "outDir": "./dist": This option specifies the output directory for the compiled JavaScript files. In this example, the compiled files will be placed in the "dist" directory.
+
+  - "rootDir": "./src": This option specifies the root directory of the TypeScript source files.
+
+  - "strict": true: Enabling strict mode enforces stricter type checking and catches more errors during development.
+
+  - "esModuleInterop": true: This option enables easier interoperability with CommonJS modules when using ES6-style import/export syntax.
