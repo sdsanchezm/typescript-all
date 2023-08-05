@@ -61,3 +61,21 @@
     -   middleware
     -   models
     -   routers
+
+### Notes
+
+-   issues when connecting to mongodb, version:
+
+    -   the `const databaseURL = 'mongodb://localhost:27017/qwe';` uses ipv6 and is not enabled by default
+    -   solution: use `const databaseURL = 'mongodb://127.0.0.1:27017/qwe';` or use `.\mongod.exe --ipv6` source:
+    -   solution: use `family: 4` as one of the options in the mongoose setup
+    -   [https://stackoverflow.com/questions/69840504/mongooseserverselectionerror-connect-econnrefused-127017]
+
+-   issue when using chalk
+
+    -   Error: code: 'ERR_REQUIRE_ESM'
+    -   solution: use chalk version 4, with typescript.
+        -   `npm install chalk@^4.1.2`
+    -   source: [https://stackoverflow.com/questions/70309135/chalk-error-err-require-esm-require-of-es-module]
+
+-
