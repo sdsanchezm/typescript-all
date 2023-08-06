@@ -17,6 +17,7 @@ mongoose
     .then(() => {
         Logging.log('DB is Connected ok...');
         // console.log(chalk.blue('Hello world!'));
+        StartServer();
     })
     .catch((err) => {
         Logging.error('An Error eocurred...');
@@ -29,3 +30,49 @@ mongoose
 // db.once('open', () => {
 //     console.log('Connected to MongoDB successfully!');
 // });
+
+const StartServer = () => {
+    router.use((req, res, next) => {
+        Logging.info(`Incoming =-> Method: ${req.method}, Path: ${req.path}, Url: ${req.url}, IP: ${req.socket.remoteAddress}`);
+
+        res.on('finish', () => {
+            Logging.info(`Incoming =-> Method: ${req.method}, Path: ${req.path}, Url: ${req.url}, IP: ${req.socket.remoteAddress}, Status: ${res.statusCode}`);
+        });
+
+        next();
+    });
+
+    //     URL-encoded parsing: URL-encoded data is a way to send data from the client (e.g., HTML forms) to the server. It takes the form of key-value pairs, and the data is URL-encoded to ensure it can be safely transmitted over HTTP.
+
+    // Parsing the data: When the server receives a request with URL-encoded data (usually from a form submission), the express.urlencoded() middleware is used to parse this data and populate the req.body object with the parsed data. This allows you to access the submitted form data in your route handlers using req.body.
+
+    // The extended option: The extended option determines how the URL-encoded data will be parsed. When extended is set to true, the qs library is used, which allows for a richer parsing, supporting nested objects and arrays. If set to false, the built-in querystring library is used, which provides simpler parsing but does not support nested structures.
+    router.use(express.urlencoded({ extended: true }));
+    router.use(express.json());
+
+    router.use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+
+        if (req.method === 'OPTIONS') {
+            res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+            return res.status(200).json({});
+        }
+
+        next();
+    });
+
+    router.get('/ping', (req, res, next) => {
+        res.status(200).json({ message: 'success' });
+    });
+
+    router.use((req, res, next) => {
+        const error = new Error('Not Found');
+        Logging.error(error);
+        return res.status(400).json({ message: error.message });
+    });
+
+    http.createServer(router).listen(config.server.port, () => {
+        Logging.info(`Server is running on port ${config.server.port}`);
+    });
+};
