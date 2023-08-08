@@ -4,6 +4,7 @@ import http from 'http';
 import mongoose from 'mongoose';
 import Logging from './library/Logging';
 import chalk from 'chalk';
+import authorRoutes from './routers/Author';
 
 const router = express();
 
@@ -62,6 +63,8 @@ const StartServer = () => {
         next();
     });
 
+    router.use('/authors', authorRoutes);
+
     router.get('/ping', (req, res, next) => {
         res.status(200).json({ message: 'success' });
     });
@@ -72,6 +75,10 @@ const StartServer = () => {
         return res.status(400).json({ message: error.message });
     });
 
+    // use app.listen or http.createServer() depends on specific requirements.
+    // the level of control and customization needed
+    // For simple applications, app.listen sufficient,
+    // for complexity using http.createServer() would be beneficial
     http.createServer(router).listen(config.server.port, () => {
         Logging.info(`Server is running on port ${config.server.port}`);
     });
