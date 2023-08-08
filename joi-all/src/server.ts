@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import Logging from './library/Logging';
 import chalk from 'chalk';
 import authorRoutes from './routers/Author';
+import bookRoutes from './routers/Books';
 
 const router = express();
 
@@ -64,6 +65,7 @@ const StartServer = () => {
     });
 
     router.use('/authors', authorRoutes);
+    router.use('/books', bookRoutes);
 
     router.get('/ping', (req, res, next) => {
         res.status(200).json({ message: 'success' });
