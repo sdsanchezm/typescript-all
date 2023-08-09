@@ -24,7 +24,22 @@
 -   It's available under the req.body property. [https://www.npmjs.com/package/body-parser]
 -
 
-## Typescript
+## app Notes
+
+-   example of .env file:
+
+```
+    MONGO_USERNAME=""
+    MONGO_PASSWORD=""
+    SERVER_PORT="9090"
+    MONGO_DBNAME=qwe
+```
+
+## Project
+
+### Diagram
+
+![alt text](readme_assets/TS-API-Mongo1.png)
 
 ### packages
 
