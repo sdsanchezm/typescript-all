@@ -174,6 +174,9 @@
             - this code defines a Mongoose schema and model for an "Author" collection
             - each author document has a `name` property
             - The interfaces help ensure type safety and provide a clear structure for author-related data
+            - could use this model in other parts of the application
+            - can import it and interact with the MongoDB collection using Mongoose methods
+            - could perform operations like creating, updating, or querying author documents in your database
 
-            - To use this model in other parts of your application, you can import it and interact with the MongoDB collection using Mongoose methods
-            - For example, you could perform operations like creating, updating, or querying author documents in your database
+    -   Joi nice information from digitalocean
+        -   [https://www.digitalocean.com/community/tutorials/how-to-use-joi-for-node-api-schema-validation]
