@@ -3,7 +3,7 @@ import Books from '../models/Books';
 import mongoos from 'mongoose';
 import mongoose from 'mongoose';
 
-const getBookAll = (req: Request, res: Response, next: NextFunction) => {
+const getAll = (req: Request, res: Response, next: NextFunction) => {
     Books.find()
         .then((books) => {
             books ? res.status(200).json({ books }) : res.status(404).json({ message: 'Not Found...' });
@@ -16,6 +16,8 @@ const getBookAll = (req: Request, res: Response, next: NextFunction) => {
 const getOneBook = (req: Request, res: Response, next: NextFunction) => {
     const bookId = req.params.bookId;
     Books.findById(bookId)
+        .populate('author') // shows the name of the author, rather than just the id
+        .select('-__v') // excludes a field, in this case the __v field (field used by MongoDB)
         .then((book) => {
             book ? res.status(200).json({ book }) : res.status(404).json({ message: 'Not Found...' });
         })
@@ -77,4 +79,4 @@ const deleteBook = (req: Request, res: Response, next: NextFunction) => {
         });
 };
 
-export default { getBookAll, getOneBook, createBook, updateBook, deleteBook };
+export default { getAll, getOneBook, createBook, updateBook, deleteBook };
