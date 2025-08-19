@@ -9,6 +9,7 @@ interface UserInitial {
     id: number;
     name: string;
     age: number;
+    email: string;
 }
 
 // 1. Make all properties optional using `Partial`

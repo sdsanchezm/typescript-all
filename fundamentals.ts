@@ -84,7 +84,8 @@ const person1: PersonInterface = { // this is similar to objects but -----?
 
 // Cannot use interfaces in unions, for example: 
 type kk1 = number | string // is okay
-interface  kk1 = number | string // is NOT okay, interfaces does not allow unions
+// interface  kk1 = number | string // is NOT okay, interfaces does not allow unions
+
 // cannot use interfaces with primitives or with unions 
 
 // ---------- function Interfaces in TypeScript
@@ -153,7 +154,9 @@ function getArray2 (items: any[]): any[] {
 // This is how to use generics in Typescript - first case:
 let numbersArray1 = getArray1<number>([1, 2, 3, 4]) // cannot add a string or similar 
 let stringArray1 = getArray1<string>(['Merk', 'Korg', 'Minsk'])
-numbersArray1.push('randomtext') // this will trigger error
+
+//numbersArray1.push('randomtext') // this will trigger ERROR
+
 // second case
 let numbersArray2 = getArray2([2,5,8,10])
 numbersArray2.push('randomtext') // this will NOT trigger error because allows pushing a different type, which is what we dont want in many cases
@@ -175,7 +178,7 @@ class User {
   constructor(id: number, username: string, usernumber: number){
     this.id = id
     this.username = username
-    this.usernumber = this.usernumber
+    this.usernumber = usernumber
     //console.log(`User ${username} created`)
   }
 }
