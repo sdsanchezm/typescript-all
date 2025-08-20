@@ -58,6 +58,15 @@ const readonlyUser: ReadonlyUser = user;
 // UserWithoutId test
 const userWithoutId: UserWithoutId = { name: "Eve", age: 28, email: "eve@example.com" };
 
+// Record<K, T> - creates a type with specified keys and value type
+type UserMap = Record<number, User>;
+
+// Required<T> - makes all properties required (opposite of Partial)
+type CompleteUser = Required<PartialUser>;
+
+// ReturnType<T> - gets return type of a function
+type UpdateUserReturn = ReturnType<typeof updateUser>;
+
 console.log("user:", user);
 console.log("partialUser:", partialUser);
 console.log("nameAndAge:", nameAndAge);
